@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void resetScene()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+    }
+
+    public void playButton()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+    }
+
+    public void quitButton()
+    {
+        Application.Quit();
     }
 }

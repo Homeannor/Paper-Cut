@@ -197,7 +197,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Time: Infinity
   m_PreviewTimeScale: 1
   m_Parameters:
@@ -2324,7 +2324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectablePrefab: {fileID: 5692493554897260747, guid: e88d421de81dccf4b9fc05c2cfcc421e,
     type: 3}
-  numberOfCollectables: 100
+  numberOfCollectables: 99
   minRadius: 40
   maxRadius: 450
 --- !u!82 &1955205791

@@ -16,6 +16,8 @@ public class GameReset : MonoBehaviour
 
     public Material blackMaterial;
     public Material whiteMaterial;
+    public Material redMaterial;
+    public Material greenMaterial;
     public Camera planeCamera;
     public Camera followCamera;
 
@@ -72,15 +74,18 @@ public class GameReset : MonoBehaviour
             TimeSpan time = TimeSpan.FromSeconds(timer);
             timeText.text = time.Minutes.ToString("00") + ":" + time.Seconds.ToString("00");
 
-            if (playerScore <= 50)
+            if (playerScore <= 10)
+            {
+                UpdateMaterials("Red");
+            }
+            else if (playerScore <= 50)
             {
                 UpdateMaterials("White");
             }
         }
         else
         {
-            timeText.color = Color.green;
-            scoreText.color = Color.green;
+            UpdateMaterials("Green");
         }
     }
 
@@ -93,9 +98,10 @@ public class GameReset : MonoBehaviour
             {
                 if (obj.GetComponent<Renderer>().material.color == Color.black)
                 {
-                    obj.GetComponent<Renderer>().material = whiteMaterial;
-                    obj.transform.Find("Black Particles").gameObject.SetActive(false);
-                    obj.transform.Find("White Particles").gameObject.SetActive(true);
+                    obj.transform.Find("Void Cube").gameObject.GetComponent<Renderer>().material = whiteMaterial;
+                    obj.transform.Find("Void Cube").gameObject.transform.Find("Black Particles").gameObject.SetActive(false);
+                    obj.transform.Find("Void Cube").gameObject.transform.Find("White Particles").gameObject.SetActive(true);
+                    obj.transform.Find("Void Cube").gameObject.transform.Find("Red Particles").gameObject.SetActive(false);
                 }
             }
 
@@ -103,10 +109,17 @@ public class GameReset : MonoBehaviour
             followCamera.GetComponent<Camera>().backgroundColor = Color.black;
 
             player.GetComponent<Renderer>().material = whiteMaterial;
+            player.GetComponent<PlaneController>().minSpeed = 60f;
+            player.GetComponent<PlaneController>().maxSpeed = 60f;
+
             player.transform.Find("Black Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 0f;
             player.transform.Find("Black Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 0f;
             player.transform.Find("White Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 1f;
             player.transform.Find("White Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 1f;
+            player.transform.Find("Red Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 0f;
+            player.transform.Find("Red Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 0f;
+            player.transform.Find("Green Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 0f;
+            player.transform.Find("Green Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 0f;
 
             scoreText.color = Color.white;
             timeText.color = Color.white;
@@ -119,9 +132,10 @@ public class GameReset : MonoBehaviour
             {
                 if (obj.GetComponent<Renderer>().material.color == Color.white)
                 {
-                    obj.GetComponent<Renderer>().material = blackMaterial;
-                    obj.transform.Find("Black Particles").gameObject.SetActive(true);
-                    obj.transform.Find("White Particles").gameObject.SetActive(false);
+                    obj.transform.Find("Void Cube").gameObject.GetComponent<Renderer>().material = blackMaterial;
+                    obj.transform.Find("Void Cube").gameObject.transform.Find("Black Particles").gameObject.SetActive(true);
+                    obj.transform.Find("Void Cube").gameObject.transform.Find("White Particles").gameObject.SetActive(false);
+                    obj.transform.Find("Void Cube").gameObject.transform.Find("Red Particles").gameObject.SetActive(false);
                 }
             }
 
@@ -129,14 +143,74 @@ public class GameReset : MonoBehaviour
             followCamera.GetComponent<Camera>().backgroundColor = Color.white;
 
             player.GetComponent<Renderer>().material = blackMaterial;
+            player.GetComponent<PlaneController>().minSpeed = 30f;
+            player.GetComponent<PlaneController>().maxSpeed = 30f;
+
             player.transform.Find("Black Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 1f;
             player.transform.Find("Black Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 1f;
             player.transform.Find("White Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 0f;
             player.transform.Find("White Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 0f;
+            player.transform.Find("Red Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 0f;
+            player.transform.Find("Red Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 0f;
+            player.transform.Find("Green Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 0f;
+            player.transform.Find("Green Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 0f;
 
             scoreText.color = Color.black;
             timeText.color = Color.black;
             infoText.color = Color.black;
+        }
+        else if (materialType == "Red")
+        {
+            GameObject[] objects = GameObject.FindGameObjectsWithTag("Obstacle");
+            foreach (GameObject obj in objects)
+            {
+                if (obj.GetComponent<Renderer>().material.color == Color.black)
+                {
+                    obj.transform.Find("Void Cube").gameObject.GetComponent<Renderer>().material = redMaterial;
+                    obj.transform.Find("Void Cube").gameObject.transform.Find("Black Particles").gameObject.SetActive(false);
+                    obj.transform.Find("Void Cube").gameObject.transform.Find("White Particles").gameObject.SetActive(false);
+                    obj.transform.Find("Void Cube").gameObject.transform.Find("Red Particles").gameObject.SetActive(true);
+                }
+            }
+
+            planeCamera.GetComponent<Camera>().backgroundColor = Color.black;
+            followCamera.GetComponent<Camera>().backgroundColor = Color.black;
+
+            player.GetComponent<Renderer>().material = redMaterial;
+            player.GetComponent<PlaneController>().minSpeed = 150f;
+            player.GetComponent<PlaneController>().maxSpeed = 150f;
+
+            player.transform.Find("Black Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 0f;
+            player.transform.Find("Black Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 0f;
+            player.transform.Find("White Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 0f;
+            player.transform.Find("White Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 0f;
+            player.transform.Find("Red Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 1f;
+            player.transform.Find("Red Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 1f;
+            player.transform.Find("Green Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 0f;
+            player.transform.Find("Green Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 0f;
+
+            scoreText.color = Color.red;
+            timeText.color = Color.red;
+            infoText.color = Color.red;
+        }
+        else if (materialType == "Green")
+        {
+            planeCamera.GetComponent<Camera>().backgroundColor = Color.black;
+            followCamera.GetComponent<Camera>().backgroundColor = Color.black;
+
+            player.GetComponent<Renderer>().material = greenMaterial;
+            player.transform.Find("Black Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 0f;
+            player.transform.Find("Black Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 0f;
+            player.transform.Find("White Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 0f;
+            player.transform.Find("White Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 0f;
+            player.transform.Find("Red Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 0f;
+            player.transform.Find("Red Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 0f;
+            player.transform.Find("Green Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 1f;
+            player.transform.Find("Green Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 1f;
+
+            scoreText.color = Color.green;
+            timeText.color = Color.green;
+            infoText.color = Color.green;
         }
     }
 

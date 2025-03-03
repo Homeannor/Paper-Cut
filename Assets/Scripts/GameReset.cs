@@ -12,6 +12,9 @@ public class GameReset : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI timeText;
     public TextMeshProUGUI infoText;
+    public TextMeshProUGUI scoreTextFollow;
+    public TextMeshProUGUI timeTextFollow;
+    public TextMeshProUGUI infoTextFollow;
     public InputActionReference resetActionReference; // Reference to the Reset input action
 
     public Material blackMaterial;
@@ -20,6 +23,8 @@ public class GameReset : MonoBehaviour
     public Material greenMaterial;
     public Camera planeCamera;
     public Camera followCamera;
+    public Material blackSkybox;
+    public Material whiteSkybox;
 
     public GameObject ringPrefab;
 
@@ -73,6 +78,7 @@ public class GameReset : MonoBehaviour
         {
             TimeSpan time = TimeSpan.FromSeconds(timer);
             timeText.text = time.Minutes.ToString("00") + ":" + time.Seconds.ToString("00");
+            timeTextFollow.text = time.Minutes.ToString("00") + ":" + time.Seconds.ToString("00");
 
             if (playerScore <= 10)
             {
@@ -108,6 +114,9 @@ public class GameReset : MonoBehaviour
             planeCamera.GetComponent<Camera>().backgroundColor = Color.black;
             followCamera.GetComponent<Camera>().backgroundColor = Color.black;
 
+            RenderSettings.skybox = blackSkybox;
+            DynamicGI.UpdateEnvironment();
+
             player.GetComponent<Renderer>().material = whiteMaterial;
             player.GetComponent<PlaneController>().minSpeed = 60f;
             player.GetComponent<PlaneController>().maxSpeed = 60f;
@@ -124,6 +133,9 @@ public class GameReset : MonoBehaviour
             scoreText.color = Color.white;
             timeText.color = Color.white;
             infoText.color = Color.white;
+            scoreTextFollow.color = Color.white;
+            timeTextFollow.color = Color.white;
+            infoTextFollow.color = Color.white;
         }
         else if (materialType == "Black")
         {
@@ -142,6 +154,9 @@ public class GameReset : MonoBehaviour
             planeCamera.GetComponent<Camera>().backgroundColor = Color.white;
             followCamera.GetComponent<Camera>().backgroundColor = Color.white;
 
+            RenderSettings.skybox = whiteSkybox;
+            DynamicGI.UpdateEnvironment();
+
             player.GetComponent<Renderer>().material = blackMaterial;
             player.GetComponent<PlaneController>().minSpeed = 30f;
             player.GetComponent<PlaneController>().maxSpeed = 30f;
@@ -158,6 +173,9 @@ public class GameReset : MonoBehaviour
             scoreText.color = Color.black;
             timeText.color = Color.black;
             infoText.color = Color.black;
+            scoreTextFollow.color = Color.white;
+            timeTextFollow.color = Color.white;
+            infoTextFollow.color = Color.white;
         }
         else if (materialType == "Red")
         {
@@ -192,6 +210,9 @@ public class GameReset : MonoBehaviour
             scoreText.color = Color.red;
             timeText.color = Color.red;
             infoText.color = Color.red;
+            scoreTextFollow.color = Color.white;
+            timeTextFollow.color = Color.white;
+            infoTextFollow.color = Color.white;
         }
         else if (materialType == "Green")
         {
@@ -211,6 +232,9 @@ public class GameReset : MonoBehaviour
             scoreText.color = Color.green;
             timeText.color = Color.green;
             infoText.color = Color.green;
+            scoreTextFollow.color = Color.white;
+            timeTextFollow.color = Color.white;
+            infoTextFollow.color = Color.white;
         }
     }
 
@@ -218,5 +242,6 @@ public class GameReset : MonoBehaviour
     {
         playerScore += scoreChange;
         scoreText.text = playerScore.ToString() + " REMAIN.";
+        scoreTextFollow.text = playerScore.ToString() + " REMAIN.";
     }
 }

@@ -39,7 +39,6 @@ public class SkyboxChanger : MonoBehaviour
 
     private void Start()
     {
-        RenderSettings.skybox = skybox;
-        DynamicGI.UpdateEnvironment();
+
     }
 }

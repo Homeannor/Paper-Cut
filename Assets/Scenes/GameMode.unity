@@ -1670,6 +1670,12 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -462981019419857548, guid: f536ef21ca1c340438519ecc41987df0, type: 3}
+--- !u!1 &1249770401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e691fbb5b270b7c4ea73051c08cb5d58,
+    type: 3}
+  m_PrefabInstance: {fileID: 1894362466}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1254106084
 GameObject:
   m_ObjectHideFlags: 0
@@ -2380,6 +2386,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1111608554900499595, guid: 7400535bcb7bd46409fc07bf0c901c3d,
         type: 3}
+      propertyPath: igloo
+      value: 
+      objectReference: {fileID: 1249770401}
+    - target: {fileID: 1111608554900499595, guid: 7400535bcb7bd46409fc07bf0c901c3d,
+        type: 3}
+      propertyPath: canvasUI
+      value: 
+      objectReference: {fileID: 841614339}
+    - target: {fileID: 1111608554900499595, guid: 7400535bcb7bd46409fc07bf0c901c3d,
+        type: 3}
       propertyPath: saveOnQuit
       value: 0
       objectReference: {fileID: 0}
@@ -2615,7 +2631,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1955205787}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd33e9115ecee40468216dc6beb874b5, type: 3}
   m_Name: 

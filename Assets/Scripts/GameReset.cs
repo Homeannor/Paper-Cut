@@ -63,6 +63,8 @@ public class GameReset : MonoBehaviour
 
         UpdateScore(0);
         UpdateMaterials("Black");
+
+        gameobject.GetComponent<AudioSource>().Play();
     }
 
     private void Update()

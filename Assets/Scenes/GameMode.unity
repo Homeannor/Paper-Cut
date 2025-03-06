@@ -2235,12 +2235,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198970886}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9ea90a71ae8b4242a4e7646a47bd3d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 500
+  maxDistance: 750
   returnSpeed: 10
   turnSpeed: 2
   dampingFactor: 0.9
@@ -3324,9 +3324,9 @@ GameObject:
   - component: {fileID: 1955205788}
   - component: {fileID: 1955205789}
   - component: {fileID: 1955205790}
-  - component: {fileID: 1955205791}
   - component: {fileID: 1955205792}
   - component: {fileID: 1955205793}
+  - component: {fileID: 1955205794}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3386,9 +3386,54 @@ MonoBehaviour:
   collectablePrefab: {fileID: 5692493554897260747, guid: e88d421de81dccf4b9fc05c2cfcc421e,
     type: 3}
   numberOfCollectables: 99
-  minRadius: 40
-  maxRadius: 450
---- !u!82 &1955205791
+  minRadius: 50
+  maxRadius: 500
+--- !u!114 &1955205792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955205787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 326a8863507734e4a9e86bf9aa8d29f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScore: 101
+  timer: 0
+  scoreText: {fileID: 831935607}
+  timeText: {fileID: 854774180}
+  infoText: {fileID: 240234780}
+  scoreTextFollow: {fileID: 47795922}
+  timeTextFollow: {fileID: 607272062}
+  infoTextFollow: {fileID: 942551145}
+  resetActionReference: {fileID: -34833470766430572, guid: 5a9e47b6b7df2574085b208429663347,
+    type: 3}
+  blackMaterial: {fileID: 2100000, guid: 266c100b12a6c154b81daf336a05173f, type: 2}
+  whiteMaterial: {fileID: 2100000, guid: b1acd4e33016ccd4cbd31e6c817fbd34, type: 2}
+  redMaterial: {fileID: 2100000, guid: 14ed2b006e83ecd48ac26c44b097e053, type: 2}
+  greenMaterial: {fileID: 2100000, guid: 75e11be9748439243a725aa2d7cd48cf, type: 2}
+  planeCamera: {fileID: 382228657}
+  followCamera: {fileID: 1506260864}
+  blackSkybox: {fileID: 2100000, guid: 71cbf5afb4b12e349ad960162653582a, type: 2}
+  whiteSkybox: {fileID: 2100000, guid: 58819d301d2821143a486932a36f43a2, type: 2}
+  ringPrefab: {fileID: 0}
+  player: {fileID: 0}
+--- !u!114 &1955205793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955205787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd33e9115ecee40468216dc6beb874b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planeCamera: {fileID: 1515139505}
+--- !u!82 &1955205794
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3398,9 +3443,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e93fdf23b5dc88948ac0db9d17993227, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6f7f73af86453e2408f7f1fa5cc68965, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.093
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3484,51 +3529,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1955205792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955205787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 326a8863507734e4a9e86bf9aa8d29f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerScore: 101
-  timer: 0
-  scoreText: {fileID: 831935607}
-  timeText: {fileID: 854774180}
-  infoText: {fileID: 240234780}
-  scoreTextFollow: {fileID: 47795922}
-  timeTextFollow: {fileID: 607272062}
-  infoTextFollow: {fileID: 942551145}
-  resetActionReference: {fileID: -34833470766430572, guid: 5a9e47b6b7df2574085b208429663347,
-    type: 3}
-  blackMaterial: {fileID: 2100000, guid: 266c100b12a6c154b81daf336a05173f, type: 2}
-  whiteMaterial: {fileID: 2100000, guid: b1acd4e33016ccd4cbd31e6c817fbd34, type: 2}
-  redMaterial: {fileID: 2100000, guid: 14ed2b006e83ecd48ac26c44b097e053, type: 2}
-  greenMaterial: {fileID: 2100000, guid: 75e11be9748439243a725aa2d7cd48cf, type: 2}
-  planeCamera: {fileID: 382228657}
-  followCamera: {fileID: 1506260864}
-  blackSkybox: {fileID: 2100000, guid: 71cbf5afb4b12e349ad960162653582a, type: 2}
-  whiteSkybox: {fileID: 2100000, guid: 58819d301d2821143a486932a36f43a2, type: 2}
-  ringPrefab: {fileID: 0}
-  player: {fileID: 0}
---- !u!114 &1955205793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955205787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd33e9115ecee40468216dc6beb874b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  planeCamera: {fileID: 1515139505}
 --- !u!1 &1959249018
 GameObject:
   m_ObjectHideFlags: 0

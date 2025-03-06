@@ -64,7 +64,7 @@ public class GameReset : MonoBehaviour
         UpdateScore(0);
         UpdateMaterials("Black");
 
-        gameobject.GetComponent<AudioSource>().Play();
+        gameObject.GetComponent<AudioSource>().Play();
     }
 
     private void Update()
@@ -79,8 +79,8 @@ public class GameReset : MonoBehaviour
         if (playerScore > 0)
         {
             TimeSpan time = TimeSpan.FromSeconds(timer);
-            timeText.text = time.Minutes.ToString("00") + ":" + time.Seconds.ToString("00");
-            timeTextFollow.text = time.Minutes.ToString("00") + ":" + time.Seconds.ToString("00");
+            timeText.text = time.Minutes.ToString("00") + ":" + time.Seconds.ToString("00") + "." + time.Milliseconds.ToString("000");
+            timeTextFollow.text = time.Minutes.ToString("00") + ":" + time.Seconds.ToString("00") + "." + time.Milliseconds.ToString("000");
 
             if (playerScore <= 10)
             {
@@ -123,6 +123,8 @@ public class GameReset : MonoBehaviour
             player.GetComponent<PlaneController>().minSpeed = 60f;
             player.GetComponent<PlaneController>().maxSpeed = 60f;
 
+            planeCamera.GetComponent<Camera>().fieldOfView = 80f;
+
             player.transform.Find("Black Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 0f;
             player.transform.Find("Black Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 0f;
             player.transform.Find("White Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 1f;
@@ -163,6 +165,8 @@ public class GameReset : MonoBehaviour
             player.GetComponent<PlaneController>().minSpeed = 30f;
             player.GetComponent<PlaneController>().maxSpeed = 30f;
 
+            planeCamera.GetComponent<Camera>().fieldOfView = 60f;
+
             player.transform.Find("Black Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 1f;
             player.transform.Find("Black Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 1f;
             player.transform.Find("White Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 0f;
@@ -200,6 +204,8 @@ public class GameReset : MonoBehaviour
             player.GetComponent<PlaneController>().minSpeed = 150f;
             player.GetComponent<PlaneController>().maxSpeed = 150f;
 
+            planeCamera.GetComponent<Camera>().fieldOfView = 100f;
+
             player.transform.Find("Black Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 0f;
             player.transform.Find("Black Trail").gameObject.GetComponent<TrailRenderer>().endWidth = 0f;
             player.transform.Find("White Trail").gameObject.GetComponent<TrailRenderer>().startWidth = 0f;
@@ -212,9 +218,9 @@ public class GameReset : MonoBehaviour
             scoreText.color = Color.red;
             timeText.color = Color.red;
             infoText.color = Color.red;
-            scoreTextFollow.color = Color.white;
-            timeTextFollow.color = Color.white;
-            infoTextFollow.color = Color.white;
+            scoreTextFollow.color = Color.red;
+            timeTextFollow.color = Color.red;
+            infoTextFollow.color = Color.red;
         }
         else if (materialType == "Green")
         {
@@ -234,9 +240,9 @@ public class GameReset : MonoBehaviour
             scoreText.color = Color.green;
             timeText.color = Color.green;
             infoText.color = Color.green;
-            scoreTextFollow.color = Color.white;
-            timeTextFollow.color = Color.white;
-            infoTextFollow.color = Color.white;
+            scoreTextFollow.color = Color.green;
+            timeTextFollow.color = Color.green;
+            infoTextFollow.color = Color.green;
         }
     }
 
